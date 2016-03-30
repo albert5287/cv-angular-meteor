@@ -1,0 +1,22 @@
+<md-card flex>
+            <md-card-title>
+                <md-card-title-text>
+                    <h2 class="md-headline">{{letter.coverLetter.title}}</h2>
+                    <span class="md-subhead">{{letter.coverLetter.subtitle}}</span>
+                </md-card-title-text>
+                <md-button class="md-fab md-fab-bottom-right" aria-label="Download" hide-xs>
+                    <a href="assets/motivation_letter.pdf" download>
+                        <i class="material-icons material-icon-color" style="margin-top: 15px">file_download</i>
+                        <md-tooltip md-direction="bottom">
+                            Download
+                        </md-tooltip>
+                    </a>
+                </md-button>
+            </md-card-title>
+            <md-card-content>
+                <md-content layout="row">
+                    <md-content ng-bind-html="letter.getContent">
+                    </md-content>
+                </md-content>
+            </md-card-content>
+        </md-card>

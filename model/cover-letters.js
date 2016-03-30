@@ -1,0 +1,1 @@
+CoverLetters = new Mongo.Collection("coverLetters");

@@ -1,14 +1,17 @@
 <head>
-  <base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="/">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body layout="row" ng-app="cv" ng-strict-di="">
  
-<div ng-app="cv" ng-strict-di="">
-  <h1>
-    <a href="/parties">Home</a>
-  </h1>
- 
-  <div ui-view=""></div>
-</div>
+<md-content layout="column" class="relative" layout-fill role="main">
+    <md-content>
+        <md-content layout="row" layout-xs="column" layout-align="center stretch" class="bg-color">
+            <md-content ui-view="sidebar" flex flex-sm="45" flex-gt-sm="25" flex-md="35" flex-gt-lg="25" class="bg-color"></md-content>
+            <md-content ui-view="content" flex flex-sm="55" flex-gt-sm="45" flex-md="55" class="bg-color right-side"></md-content>
+        </md-content>
+    </md-content>
+</md-content>
  
 </body>

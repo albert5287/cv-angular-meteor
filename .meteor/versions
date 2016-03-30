@@ -6,8 +6,8 @@ angular:angular@1.4.8
 angular:angular-animate@1.4.8
 angular:angular-aria@1.4.8
 angular:angular-material@1.0.6
+angular:angular-sanitize@1.4.8
 angularui:angular-ui-router@0.2.15
-autopublish@1.0.5
 autoupdate@1.2.6
 babel-compiler@6.5.2
 babel-runtime@0.1.6
@@ -33,6 +33,7 @@ ecmascript-runtime@0.2.8
 ejson@1.0.9
 es5-shim@4.5.8
 fastclick@1.0.9
+fourseven:scss@3.4.1
 geojson-utils@1.0.6
 hot-code-push@1.0.2
 html-tools@1.0.7
