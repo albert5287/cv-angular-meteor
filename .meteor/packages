@@ -13,7 +13,6 @@ tracker                 # Meteor's client-side reactive programming library
 
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 
-insecure                # Allow all DB writes from clients (for prototyping)
 angular
 angularui:angular-ui-router
 standard-minifier-css
@@ -21,3 +20,7 @@ standard-minifier-js
 angular:angular-material
 fourseven:scss
 angular:angular-sanitize
+accounts-password
+ins0m:accounts-ui-angular-unstyled
+rshashkov:angular-meteor-text-angular
+yasaricli:slugify
