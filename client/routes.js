@@ -13,9 +13,16 @@ angular.module('cv').config(function ($urlRouterProvider, $stateProvider, $locat
       }
     },
     resolve: {
-      profile: ['$meteor',function($meteor){
-        return $meteor.subscribe('profile');
-      }]
+        profile: ['$q', function ($q) {
+            var deferred = $q.defer();
+
+            Meteor.subscribe('profile', {
+                onReady: deferred.resolve,
+                onStop: deferred.reject
+            });
+
+            return deferred.promise;
+        }]
     }
   })
   .state('cv.coverLetter', {
@@ -26,9 +33,16 @@ angular.module('cv').config(function ($urlRouterProvider, $stateProvider, $locat
       }
     },
     resolve: {
-      coverLetter: ['$meteor',function($meteor){
-        return $meteor.subscribe('coverLetters');
-      }]
+        coverLetter: ['$q', function ($q) {
+            var deferred = $q.defer();
+
+            Meteor.subscribe('coverLetters', {
+                onReady: deferred.resolve,
+                onStop: deferred.reject
+            });
+
+            return deferred.promise;
+        }]
     },
     onEnter: function($stateParams, $state){
       var letter = CoverLetters.findOne({slug : $stateParams.slug});
