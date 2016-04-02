@@ -4,18 +4,7 @@ angular.module('cv').config(function ($urlRouterProvider, $stateProvider, $locat
     $stateProvider
         .state('profile', {
             abstract: true,
-            template: '<profilestructure></profilestructure>'
-        })
-        .state('profile.cv', {
-            url: "/",
-            views: {
-                sidebar: {
-                    template: '<sidebar></sidebar>'
-                },
-                content: {
-                    template: '<profile></profile>'
-                }
-            },
+            template: '<profilestructure></profilestructure>',
             resolve: {
                 profile: ['$q', function ($q) {
                     var deferred = $q.defer();
@@ -29,10 +18,18 @@ angular.module('cv').config(function ($urlRouterProvider, $stateProvider, $locat
                 }]
             }
         })
-        .state('profile.coverLetter', {
-            url: 'cover-letter/:slug',
+        .state('profile.cv', {
+            url: "/",
             views: {
-                'content@': {
+                content: {
+                    template: '<profile></profile>'
+                }
+            }
+        })
+        .state('profile.coverLetter', {
+            url: '/cover-letter/:slug',
+            views: {
+                'content': {
                     template: '<coverletter></coverletter>'
                 }
             },
@@ -46,12 +43,22 @@ angular.module('cv').config(function ($urlRouterProvider, $stateProvider, $locat
                     });
 
                     return deferred.promise;
+                }],
+                files: ['$q', function ($q) {
+                    var deferred = $q.defer();
+
+                    Meteor.subscribe('files', {
+                        onReady: deferred.resolve,
+                        onStop: deferred.reject
+                    });
+
+                    return deferred.promise;
                 }]
             },
             onEnter: function ($stateParams, $state) {
                 var letter = CoverLetters.findOne({slug: $stateParams.slug});
                 if (!letter) {
-                    $state.go('cv');
+                    $state.go('profile.cv');
                 }
             }
         })
