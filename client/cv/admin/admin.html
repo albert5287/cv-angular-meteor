@@ -1,22 +1,28 @@
-<login-buttons></login-buttons>
-<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
-<div style="margin-top : 100px;" ng-if="covers.isLoggedIn">
-    <h3>Cover Letters <span style="margin-left: 100px" ng-click="covers.setShowForm(null)">+ new letter</span> </h3>
-    <div ng-show="covers.showForm">
-        <form>
-            <p ng-click="covers.hideForm()">x close</p>
-            letter name: <input type="text" ng-model="covers.selectedLetter.name"/><br /> <br />
-            title: <input type="text" ng-model="covers.selectedLetter.title" /><br /><br />
-            subtitle: <input type="text" ng-model="covers.selectedLetter.subtitle" /><br /><br />
+<div>
+    <login-buttons></login-buttons>
+    <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
+    <div style="margin-top : 100px; padding: 50px" ng-if="covers.isLoggedIn">
+        <h3>Cover Letters <span style="margin-left: 100px" ng-click="covers.setShowForm(null)">+ new letter</span> </h3>
+        <div ng-show="covers.showForm">
+            <form name="covers.form" novalidate>
+                <p ng-click="covers.hideForm()">x close</p>
+                letter name: <input type="text" ng-model="covers.selectedLetter.name"/><br /> <br />
+                title: <input type="text" ng-model="covers.selectedLetter.title" /><br /><br />
+                subtitle: <input type="text" ng-model="covers.selectedLetter.subtitle" /><br /><br />
 
-            <text-angular ng-model="covers.selectedLetter.content"></text-angular>
-            <button ng-click="covers.save()">Save</button>
-        </form>
+                <text-angular ng-model="covers.selectedLetter.content"></text-angular>
+                <br>File:
+                <input type="file" ngf-select ng-model="covers.file" name="file"
+                       accept="application/pdf"
+                       ngf-model-invalid="errorFile">
+                <button ng-click="covers.save()">Save</button>
+            </form>
+        </div>
+        <ul ng-show="!covers.showForm">
+            <li ng-repeat="letter in covers.coverLetters">
+                <p ng-click="covers.setShowForm(letter._id)">{{letter.name}}</p>
+            </li>
+        </ul>
     </div>
-    <ul ng-show="!covers.showForm">
-        <li ng-repeat="letter in covers.coverLetters">
-            <p ng-click="covers.setShowForm(letter._id)">{{letter.name}}</p>
-        </li>
-    </ul>
 </div>

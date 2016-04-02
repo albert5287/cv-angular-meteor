@@ -1,4 +1,4 @@
-angular.module('cv').directive('resolveLoader', function ($rootScope, $timeout) {
+angular.module('cv').directive('resolveLoader', function ($rootScope) {
 
     return {
         restrict: 'E',

@@ -24,3 +24,6 @@ accounts-password
 ins0m:accounts-ui-angular-unstyled
 rshashkov:angular-meteor-text-angular
 yasaricli:slugify
+cfs:standard-packages
+danialfarid:ng-file-upload
+cfs:gridfs

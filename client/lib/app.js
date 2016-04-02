@@ -4,7 +4,8 @@ angular.module('cv', [
 	'ngMaterial',
 	'ngSanitize',
 	'accounts.ui',
-	'textAngular'
+	'textAngular',
+    'ngFileUpload'
 	]);
 
 

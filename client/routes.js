@@ -2,7 +2,11 @@ angular.module('cv').config(function ($urlRouterProvider, $stateProvider, $locat
     $locationProvider.html5Mode(true);
 
     $stateProvider
-        .state('cv', {
+        .state('profile', {
+            abstract: true,
+            template: '<profilestructure></profilestructure>'
+        })
+        .state('profile.cv', {
             url: "/",
             views: {
                 sidebar: {
@@ -25,7 +29,7 @@ angular.module('cv').config(function ($urlRouterProvider, $stateProvider, $locat
                 }]
             }
         })
-        .state('cv.coverLetter', {
+        .state('profile.coverLetter', {
             url: 'cover-letter/:slug',
             views: {
                 'content@': {
@@ -51,74 +55,14 @@ angular.module('cv').config(function ($urlRouterProvider, $stateProvider, $locat
                 }
             }
         })
-        .state('login', {
-            url: '/admin/login',
-            views: {
-                'content@': {
-                    templateUrl: 'client/cv/admin/admin.html',
-                    controllerAs: 'covers',
-                    controller: function($scope, $reactive){
-                        var vm = this;
-                        var letterDetails = {
-                            name : '',
-                            title: '',
-                            subtitle: '',
-                            content: ''
-                        };
-                        console.log('aqui');
-                        $reactive(vm).attach($scope);
-                        vm.idShowForm = null;
-                        vm.subscribe('coverLetters');
-
-                        vm.helpers({
-                            coverLetters: () => {
-                                return  CoverLetters.find({});
-                            },
-                            isLoggedIn: () => {
-                                return Meteor.user() ? true : false;
-                            },
-                            selectedLetter: () => {
-                                console.log('selected');
-                                if(vm.getReactively('idShowForm') == null){
-                                    return letterDetails
-                                }
-                                else{
-                                    return CoverLetters.findOne({_id : vm.getReactively('idShowForm')})
-                                }
-                            }
-                        });
-
-                        vm.showForm = false;
-                        vm.setShowForm = function(id){
-                            vm.idShowForm = id;
-                            vm.showForm = true;
-                        };
-                        vm.hideForm = function(){
-                            console.log('test')
-                            vm.showForm = false;
-                        };
-                        vm.save = function(){
-                            vm.selectedLetter.slug = slugify(vm.selectedLetter.name);
-                            if(vm.showForm == null){
-                                CoverLetters.insert(vm.selectedLetter);
-                            }
-                            else{
-                                CoverLetters.update({_id : vm.selectedLetter._id},
-                                    {
-                                        $set: {
-                                            name : vm.selectedLetter.name,
-                                            slug : vm.selectedLetter.slug,
-                                            title : vm.selectedLetter.title,
-                                            subtitle : vm.selectedLetter.subtitle,
-                                            content : vm.selectedLetter.content
-                                        }
-                                    });
-                            }
-                            console.log('test', vm.selectedLetter);
-                        }
-                    }
-                },
-            },
+        .state('admin', {
+            abstract: true,
+            url: '/admin',
+            template: '<ui-view/>'
+        })
+        .state('admin.login', {
+            url: '/login',
+            template: '<adminlogin></adminlogin>'
         });
 
     $urlRouterProvider.otherwise("/");
