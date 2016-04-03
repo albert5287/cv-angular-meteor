@@ -63,7 +63,7 @@ angular.module('cv').directive('adminlogin', function () {
                 }
 
                 //if null is new record
-                if(vm.showForm == null){
+                if(vm.idShowForm == null){
                     CoverLetters.insert(vm.selectedLetter);
                 }
                 //else i have to update
