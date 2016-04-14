@@ -162,8 +162,8 @@ Meteor.startup(() => {
                     },
                     {
                         "institute": "Universitat Jaume I",
-                        "title": "Ingeniero TÈcnico en Inform·tica de Sistemas",
-                        "discipline": "IngenierÌa inform·tica",
+                        "title": "Ingeniero T√©cnico en Inform√°tica de Sistemas",
+                        "discipline": "Ingenier√≠a inform√°tica",
                         "score": "73/100",
                         "activities": "Distributed Programming, Advanced Databases, InformationTechnologies and Society, Client/Server Systems, Algorithmic Scheme, Networks, Advanced Programming, Data and Information Structures, Operating Systems, Calculus, Physics, Management Software Engineering",
                         "from": "2011",

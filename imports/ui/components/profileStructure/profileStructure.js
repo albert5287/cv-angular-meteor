@@ -6,6 +6,7 @@ import './profileStructure.html';
 
 import { name as Sidebar } from '../sidebar/sidebar';
 import { name as Profile } from '../profile/profile';
+import { name as ResolveLoader } from '../resolveLoader/resolveLoader';
 
 class ProfileStructure {}
 
@@ -16,7 +17,8 @@ export default angular.module(name, [
     angularMeteor,
     uiRouter,
     Sidebar,
-    Profile
+    Profile,
+    ResolveLoader
 ]).component(name, {
     templateUrl: `imports/ui/components/${name}/${name}.html`,
     controllerAs: name,
@@ -45,15 +47,3 @@ function config($stateProvider) {
             }
         });
 }
-
-
-
-
-/*angular.module('cv').directive('profilestructure', function () {
-    return {
-        restrict: 'E',
-        replace: true,
-        templateUrl: 'client/cv/profilestructure/profileStructure.html'
-    };
-});
-*/
