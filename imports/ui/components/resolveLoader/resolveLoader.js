@@ -7,25 +7,17 @@ import './resolveLoader.html';
 class ResolveLoader{
     constructor($rootScope){
         'ngInject';
-
-        console.log('resolve?');
-        this.restrict='E';
-        this.replace='true';
-        this.$rootScope = $rootScope;
-        //this.link = this.linkFunction;
-    }
-    link(scope, element){
-        console.log('aqui')
+        var vm = this;
+        vm.hide = true;
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
-            console.log('aqui 2')
             if (fromState.name !== "") return;
-            element.removeClass('ng-hide');
+            vm.hide = false;
         });
 
         $rootScope.$on('$stateChangeSuccess', function () {
-            console.log('aqui 3')
-            element.addClass('ng-hide');
+            vm.hide = true;
         });
+
     }
 }
 
