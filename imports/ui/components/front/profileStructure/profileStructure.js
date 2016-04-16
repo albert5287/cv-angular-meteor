@@ -6,7 +6,7 @@ import './profileStructure.html';
 
 import { name as Sidebar } from '../sidebar/sidebar';
 import { name as Profile } from '../profile/profile';
-import { name as ResolveLoader } from '../resolveLoader/resolveLoader';
+import { name as ResolveLoader } from '../../resolveLoader/resolveLoader';
 
 class ProfileStructure {}
 
@@ -20,7 +20,7 @@ export default angular.module(name, [
     Profile,
     ResolveLoader
 ]).component(name, {
-    templateUrl: `imports/ui/components/${name}/${name}.html`,
+    templateUrl: `imports/ui/components/front/${name}/${name}.html`,
     controllerAs: name,
     controller: ProfileStructure
 })

@@ -16,7 +16,7 @@ export default angular.module(name, [
     uiRouter,
     ProfileStructure
 ]).component(name, {
-    templateUrl: `imports/ui/components/${name}/${name}.html`,
+    templateUrl: `imports/ui/components/front/${name}/${name}.html`,
     controllerAs: name,
     controller: Cv
 })

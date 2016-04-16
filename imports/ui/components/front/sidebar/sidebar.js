@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import './sidebar.html';
-import { Profiles } from '../../../api/profiles';
+import { Profiles } from '../../../../api/profiles';
 
 class Sidebar{
   constructor($scope, $reactive){
@@ -60,7 +60,7 @@ const name = 'sidebar';
 export default angular.module(name, [
   angularMeteor
 ]).component(name, {
-  templateUrl: `imports/ui/components/${name}/${name}.html`,
+  templateUrl: `imports/ui/components/front/${name}/${name}.html`,
   controllerAs: name,
   controller: Sidebar
 });

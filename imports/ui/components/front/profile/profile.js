@@ -4,7 +4,7 @@ import uiRouter from 'angular-ui-router';
 
 import './profile.html';
 
-import { Profiles } from '../../../api/profiles';
+import { Profiles } from '../../../../api/profiles';
 
 
 class Profile {
@@ -58,7 +58,7 @@ export default angular.module(name, [
     angularMeteor,
     uiRouter
 ]).component(name, {
-    templateUrl: `imports/ui/components/${name}/${name}.html`,
+    templateUrl: `imports/ui/components/front/${name}/${name}.html`,
     controllerAs: name,
     controller: Profile
 })
