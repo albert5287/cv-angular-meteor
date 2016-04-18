@@ -9,6 +9,12 @@
 </head>
 <body layout="row" ng-app="resume" ng-strict-di="">
 
-<cv></cv>
+<!--<cv></cv>-->
+<resolve-loader></resolve-loader>
+<md-content layout="column" class="relative" layout-fill role="main">
+    <md-content ui-view>
+
+    </md-content>
+</md-content>
 
 </body>

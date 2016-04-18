@@ -5,9 +5,12 @@ import uiRouter from 'angular-ui-router';
 
 import { name as Cv } from '../imports/ui/components/front/cv/cv';
 
+import { name as Admin } from '../imports/ui/components/admin/admin/admin';
+
 angular.module('resume', [
-  angularMeteor,
-  ngMaterial,
-  uiRouter,
-  Cv
+    angularMeteor,
+    ngMaterial,
+    uiRouter,
+    Cv,
+    Admin
 ]);
