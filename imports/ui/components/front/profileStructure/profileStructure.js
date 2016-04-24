@@ -6,7 +6,6 @@ import './profileStructure.html';
 
 import { name as Sidebar } from '../sidebar/sidebar';
 import { name as Profile } from '../profile/profile';
-import { name as ResolveLoader } from '../../resolveLoader/resolveLoader';
 
 class ProfileStructure {}
 
@@ -18,7 +17,6 @@ export default angular.module(name, [
     uiRouter,
     Sidebar,
     Profile,
-    ResolveLoader
 ]).component(name, {
     templateUrl: `imports/ui/components/front/${name}/${name}.html`,
     controllerAs: name,

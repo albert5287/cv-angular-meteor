@@ -4,7 +4,9 @@ import uiRouter from 'angular-ui-router';
 
 import './cv.html';
 
-import { name as ProfileStructure } from '../profileStructure/profileStructure';
+import { name as ResolveLoader } from '../resolveLoader/resolveLoader';
+import { name as ProfileStructure } from '../front/profileStructure/profileStructure';
+import { name as AdminStructure } from '../admin/adminStructure/adminStructure';
 
 class Cv {}
 
@@ -14,9 +16,11 @@ const name = 'cv';
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
-    ProfileStructure
+    ResolveLoader,
+    ProfileStructure,
+    AdminStructure,
 ]).component(name, {
-    templateUrl: `imports/ui/components/front/${name}/${name}.html`,
+    templateUrl: `imports/ui/components/${name}/${name}.html`,
     controllerAs: name,
     controller: Cv
 })

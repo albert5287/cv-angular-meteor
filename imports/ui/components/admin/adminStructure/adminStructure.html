@@ -1,0 +1,23 @@
+<md-content layout="row" layout-fill layout-align="stretch">
+    <admin-sidebar class="test"></admin-sidebar>
+
+    <div layout="column" class="relative" layout-fill role="main">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+                    <i class="material-icons">menu</i>
+                </md-button>
+                <h3>
+                    {{vm.title}}
+                </h3>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <md-content flex class="md-padding page-content">
+            <div ui-view="content"></div>
+        </md-content>
+
+    </div>
+</md-content>
+
+

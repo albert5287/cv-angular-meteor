@@ -3,14 +3,14 @@ import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
-import { name as Cv } from '../imports/ui/components/front/cv/cv';
+import { name as Cv } from '../imports/ui/components/cv/cv';
 
-import { name as Admin } from '../imports/ui/components/admin/admin/admin';
+//import { name as AdminStructure } from '../imports/ui/components/admin/adminStructure/adminStructure';
 
 angular.module('resume', [
     angularMeteor,
     ngMaterial,
     uiRouter,
     Cv,
-    Admin
+//    AdminStructure
 ]);
