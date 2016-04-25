@@ -34,14 +34,15 @@ h4{
   @include respond-to(medium-screens) { height: 350px; }
   @include respond-to(wide-screens) { height: 400px;  }
   @include respond-to(large-screens) { height: 500px;  }
+  .title{
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    color: $title-color;
+  }
 }
 
-.title{
-  position: absolute;
-  left: 20px;
-  bottom: 10px;
-  color: $title-color;
-}
+
 
 .contact-info{
   margin-bottom: 20px;
@@ -159,9 +160,9 @@ md-list {
 }
 
 /*text editor*/
-input{
+/*input{
   min-width: 500px;
-}
+}*/
 .ta-hidden-input {
   width: 1px;
   height: 1px;
@@ -429,7 +430,7 @@ $table-border-color:            #e0e0e0;
 }
 //TABLES
 .table {
-  margin-top: 40px;
+  margin-top: 70px;
   border-spacing: 0;
   width: 100%;
   max-width: 100%;
@@ -617,5 +618,77 @@ $table-border-color:            #e0e0e0;
 }
 
 admin-sidebar{
+  height: 100%;
+}
+
+/*login page*/
+#login {
+  height: 100%;
+  background-size: cover;
+  background: $main-bg-color;
+
+  #login-form-wrapper {
+    flex: 1 0 auto;
+    padding: 32px;
+
+    #login-form {
+      width: 384px;
+      max-width: 384px;
+      padding: 32px;
+      background: #FFFFFF;
+      text-align: center;
+
+      .logo {
+        width: 160px;
+        height: 90px;
+        font-size: 75px;
+        font-weight: 500;
+        margin: 32px auto;
+        border-radius: 2px;
+        background-color: rgb(3,155,229);
+        color: white;
+      }
+
+      .title {
+        font-size: 17px;
+        margin: 16px 0 32px 0;
+      }
+
+      form {
+        width: 100%;
+        text-align: left;
+
+        md-checkbox {
+          margin: 0;
+        }
+
+        .remember-forgot-password {
+          font-size: 13px;
+          margin-top: 8px;
+
+          .remember-me {
+            margin-bottom: 16px
+          }
+
+          .forgot-password {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 16px
+          }
+        }
+
+        .submit-button {
+          width: 220px;
+          margin: 16px auto;
+          display: block;
+        }
+      }
+
+    }
+  }
+}
+
+.ng-scope{
+  width: 100%;
   height: 100%;
 }

@@ -2,8 +2,11 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
+import { Meteor } from 'meteor/meteor';
+
 import './adminStructure.html';
 
+import { name as Login } from '../login/login';
 import { name as AdminSidebar } from '../adminSidebar/adminSidebar';
 import { name as ListCoverLetters } from '../listCoverLetters/listCoverLetters';
 
@@ -22,6 +25,7 @@ const name = 'adminStructure';
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
+    Login,
     AdminSidebar,
     ListCoverLetters
 ]).component(name, {
@@ -38,6 +42,17 @@ function config($stateProvider) {
         .state('admin', {
             url: '/admin',
             abstract: true,
-            template: '<admin-structure style="border: 1px solid blue"></admin-structure>'
+            template: '<admin-structure></admin-structure>',
+            resolve: {
+                currentUser($q){
+                    if (Meteor.userId() === null) {
+                        return $q.reject('AUTH_REQUIRED');
+                    }
+                    else {
+                        return $q.resolve();
+                    }
+                }
+            }
         });
 }
+

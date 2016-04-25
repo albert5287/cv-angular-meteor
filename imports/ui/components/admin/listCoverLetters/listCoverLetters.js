@@ -15,7 +15,7 @@ class ListCoverLetters {
 
         this.helpers({
             coverLetters ()  {
-                return CoverLetters.findOne({});
+                return CoverLetters.find({});
             }
 
         });
@@ -33,7 +33,7 @@ export default angular.module(name, [
     uiRouter
 ]).component(name, {
     templateUrl: `imports/ui/components/admin/${name}/${name}.html`,
-    controllerAs: name,
+    controllerAs: "vm",
     controller: ListCoverLetters
 })
     .config(config);
