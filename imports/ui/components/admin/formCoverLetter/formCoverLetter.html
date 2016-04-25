@@ -9,7 +9,7 @@
     <md-card-content>
     <form name="basicForm" class="md-inline-form" novalidate>
 
-        <div layout="column" layout-gt-sm="row">
+        <div layout="column">
             <md-input-container flex>
                 <input type="text" name="name" ng-model="vm.coverLetter.name"
                        placeholder="Cover Letter Name"
@@ -43,6 +43,7 @@
                     </div>
                 </div>
             </md-input-container>
+            <text-angular ng-model="covers.selectedLetter.content"></text-angular>
         </div>
 
         <div layout="column" layout-gt-xs="row">

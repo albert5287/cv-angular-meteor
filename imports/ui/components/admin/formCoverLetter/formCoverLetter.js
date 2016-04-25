@@ -1,6 +1,9 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
+import ngSanitize from 'textAngular/dist/textAngular-sanitize';
+import textangular from 'textangular';
+
 
 import './formCoverLetter.html';
 
@@ -41,7 +44,8 @@ const name = 'formCoverLetter';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    uiRouter
+    uiRouter,
+    textangular
 ]).component(name, {
     templateUrl: `imports/ui/components/admin/${name}/${name}.html`,
     controllerAs: "vm",
