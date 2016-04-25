@@ -10,6 +10,7 @@
             <th>Slug</th>
             <th>Created on</th>
             <th>updated on</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -18,6 +19,10 @@
             <td data-title="Issue">{{letter.slug}}</td>
             <td data-title="Status"></td>
             <td data-title="Progress"></td>
+            <td data-title="Actions">
+                <md-button class="md-raised md-primary" ui-sref="admin.coverLetters.add">Edit</md-button>
+                <md-button class="md-raised md-warn">Delete</md-button>
+            </td>
         </tr>
         </tbody>
     </table>

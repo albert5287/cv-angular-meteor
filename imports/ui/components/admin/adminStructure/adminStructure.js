@@ -9,6 +9,7 @@ import './adminStructure.html';
 import { name as Login } from '../login/login';
 import { name as AdminSidebar } from '../adminSidebar/adminSidebar';
 import { name as ListCoverLetters } from '../listCoverLetters/listCoverLetters';
+import { name as FormCoverLetter } from '../formCoverLetter/formCoverLetter';
 
 class AdminStructure {
     constructor($state){
@@ -27,7 +28,8 @@ export default angular.module(name, [
     uiRouter,
     Login,
     AdminSidebar,
-    ListCoverLetters
+    ListCoverLetters,
+    FormCoverLetter,
 ]).component(name, {
     templateUrl: `imports/ui/components/admin/${name}/${name}.html`,
     controllerAs: "vm",
