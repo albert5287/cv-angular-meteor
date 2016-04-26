@@ -12,10 +12,11 @@ import { name as ListCoverLetters } from '../listCoverLetters/listCoverLetters';
 import { name as FormCoverLetter } from '../formCoverLetter/formCoverLetter';
 
 class AdminStructure {
-    constructor($state){
+    constructor($scope, $reactive, $state){
         'ngInject';
 
         var vm = this;
+        $reactive(vm).attach($scope);
         vm.title = $state.current.data.title;
     }
 }

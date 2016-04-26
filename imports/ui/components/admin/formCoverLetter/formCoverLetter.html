@@ -2,7 +2,7 @@
     <md-card-header>
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">{{vm.headline}}</span>
+                <span class="md-headline">{{vm.headline}} {{::vm.coverLetter.name}}</span>
             </md-card-title-text>
         </md-card-title>
     </md-card-header>
@@ -43,47 +43,27 @@
                     </div>
                 </div>
             </md-input-container>
-            <text-angular ng-model="covers.selectedLetter.content"></text-angular>
+
+            <md-input-container flex>
+                <text-angular ng-model="vm.coverLetter.content"></text-angular>
+            </md-input-container>
+
+            <md-input-container flex>
+                <input type="file" ngf-select ng-model="vm.file" name="file"
+                       accept="application/pdf"
+                       ngf-model-invalid="errorFile">
+            </md-input-container>
+
+
+
         </div>
 
-        <div layout="column" layout-gt-xs="row">
-            <md-input-container flex>
-                <label>City</label>
-                <input type="text" name="city" ng-model="vm.basicForm.city">
-            </md-input-container>
-
-            <md-input-container flex>
-                <label>State</label>
-                <md-select ng-model="vm.basicForm.state">
-                    <md-option ng-repeat="state in vm.states" value="{{state.abbrev}}">
-                        {{state.abbrev}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-
-            <md-input-container flex>
-                <label>Postal Code</label>
-                <input name="postalcode" ng-model="vm.basicForm.postalCode" placeholder="12345"
-                       required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-                <div ng-messages="basicForm.postalcode.$error" role="alert" multiple>
-                    <div ng-message="required"><span>You must supply a postal code.</span></div>
-                    <div ng-message="pattern"><span>That doesn't look like a valid postal code.</span></div>
-                    <div ng-message="md-maxlength">
-                        <span>Postal code can't be longer than 5 characters.</span>
-                    </div>
-                </div>
-            </md-input-container>
-        </div>
-
-        <md-input-container class="md-block">
-            <label>Biography</label>
-            <textarea ng-model="vm.basicForm.biography" columns="1" md-maxlength="150" rows="5"></textarea>
-        </md-input-container>
-
-        <md-button type="submit" class="md-raised md-accent" aria-label="Submit"
-                   ng-disabled="basicForm.$invalid || basicForm.$pristine">
-            Submit
+        <md-button ng-click="vm.save()" class="md-raised md-accent" aria-label="Submit"
+                   ng-disabled="basicForm.$invalid">
+            Save
         </md-button>
     </form>
     </md-card-content>
 </md-card>
+
+<p>test: {{vm.files}}</p>

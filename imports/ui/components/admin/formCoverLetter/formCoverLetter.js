@@ -1,13 +1,18 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
-import ngSanitize from 'textAngular/dist/textAngular-sanitize';
+import ngSanitize from 'textangular/dist/textAngular-sanitize';
 import textangular from 'textangular';
+import ngFileUpload from 'ng-file-upload';
 
+import { Meteor } from 'meteor/meteor';
 
 import './formCoverLetter.html';
 
 import { CoverLetters } from '../../../../api/coverLetters';
+import { Files } from '../../../../api/files';
+
+
 
 
 class FormCoverLetter {
@@ -17,25 +22,81 @@ class FormCoverLetter {
         var vm = this;
         $reactive(vm).attach($scope);
 
+        this.$state = $state;
+        this.edit = false;
+
+        vm.headline = 'New Cover Letter';
+
+        var letter = {
+            name : '',
+            title: '',
+            subtitle: '',
+            content: ''
+        };
+
         //edit a cover letter
-        if($state.params.id){
+        if(this.$state.params.id){
+            this.edit = true;
             vm.headline = 'Edit';
-            console.log('edit');
-        }
-        //new cover letter
-        else{
-            vm.headline = 'New Cover Letter';
-            console.log('new');
         }
 
-
+        //helpers
         vm.helpers({
-            coverLetters ()  {
-                return CoverLetters.find({});
+            coverLetter ()  {
+                if(this.edit){
+                    var coverLetter = CoverLetters.findOne({_id: $state.params.id});
+                    if(coverLetter.fileId){
+                        coverLetter.file = Files.findOne({_id: coverLetter.fileId});
+                    }
+                    console.log(coverLetter);
+                    return coverLetter;
+                    //return CoverLetters.findOne({_id: $state.params.id});
+                }
+                else{
+                    return letter;
+                }
+            },
+            files(){
+                var test = Files.findOne({_id: "cNAzZTcritamYbDXZ"});
+                return test;
             }
-
         });
 
+
+    }
+
+    save(){
+        //cNAzZTcritamYbDXZ
+        var file = this.file;
+        file.store = 'test';
+        console.log(file);
+        var fileId = Files.insert(file);
+        console.log(fileId);
+       /* var coverLetter = this.coverLetter;
+        var file = this.file;
+        if(file){
+            //if there is a previous file, delete
+            if(coverLetter.idFile){
+                Files.remove({_id: coverLetter.fileId});
+            }
+            var fileId = Files.insert(file[0]);
+            coverLetter.fileId = fileId;
+        }
+        Meteor.call('saveCoverLetter', coverLetter,
+            (error, result) => {
+                if(error){
+                    console.log('error', error);
+                }
+                else{
+                    if(this.edit){
+                        this.$state.go('admin.coverLetters');
+                    }
+                    else{
+                        this.$state.go('admin.coverLetters.edit', {id: result.insertedId});
+                    }
+                }
+            }
+        );*/
     }
 }
 
@@ -45,7 +106,8 @@ const name = 'formCoverLetter';
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
-    textangular
+    textangular,
+    ngFileUpload,
 ]).component(name, {
     templateUrl: `imports/ui/components/admin/${name}/${name}.html`,
     controllerAs: "vm",
@@ -77,6 +139,23 @@ function config($stateProvider) {
             },
             data: {
                 title: 'Edit Cover Letter'
+            },
+            resolve: {
+                files: ['$q', function ($q) {
+                    var deferred = $q.defer();
+
+                    Meteor.subscribe('files', {
+                        onReady: deferred.resolve,
+                        onStop: deferred.reject
+                    });
+                    return deferred.promise;
+                }]
+            },
+            onEnter: function ($stateParams, $state) {
+                var letter = CoverLetters.findOne({_id: $stateParams.id});
+                if (!letter) {
+                    $state.go('admin.coverLetters');
+                }
             }
         });
 

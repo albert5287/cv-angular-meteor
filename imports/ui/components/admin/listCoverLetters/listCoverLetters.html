@@ -1,5 +1,5 @@
 <auth></auth>
-<md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="showAdd($event)">
+<md-button class="md-fab md-fab-bottom-right" aria-label="Add" ui-sref="admin.coverLetters.add">
     <i class="material-icons margin-top-15">add</i>
 </md-button>
 <div class="table-responsive-vertical md-whiteframe-z1">
@@ -15,12 +15,12 @@
         </thead>
         <tbody>
         <tr ng-repeat="letter in vm.coverLetters">
-            <td data-title="ID">{{letter.name}}</td>
-            <td data-title="Issue">{{letter.slug}}</td>
+            <td data-title="ID">{{::letter.name}}</td>
+            <td data-title="Issue">{{::letter.slug}}</td>
             <td data-title="Status"></td>
             <td data-title="Progress"></td>
             <td data-title="Actions">
-                <md-button class="md-raised md-primary" ui-sref="admin.coverLetters.add">Edit</md-button>
+                <md-button class="md-raised md-primary" ui-sref="admin.coverLetters.edit({id: letter._id})">Edit</md-button>
                 <md-button class="md-raised md-warn">Delete</md-button>
             </td>
         </tr>

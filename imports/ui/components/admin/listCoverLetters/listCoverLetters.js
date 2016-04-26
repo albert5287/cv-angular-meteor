@@ -51,7 +51,17 @@ function config($stateProvider) {
             },
             data: {
                 title: 'Cover Letters'
-            }
+            },
+            resolve: {
+                coverLetter: ['$q', function ($q) {
+                    var deferred = $q.defer();
+                    Meteor.subscribe('coverLetters', {
+                        onReady: deferred.resolve,
+                        onStop: deferred.reject
+                    });
+                    return deferred.promise;
+                }]
+            },
         });
 
 }
