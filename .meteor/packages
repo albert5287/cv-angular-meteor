@@ -24,3 +24,5 @@ dotansimha:accounts-ui-angular
 check
 jalik:ufs
 jalik:ufs-gridfs
+cfs:standard-packages
+cfs:gridfs

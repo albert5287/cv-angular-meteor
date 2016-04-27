@@ -58,6 +58,19 @@
 
         </div>
 
+        <div layout="column" layout-gt-sm="row">
+            <md-input-container flex>
+                <input type="file" ngf-select ng-model="vm.file" name="file"
+                       accept="application/pdf"
+                       ngf-model-invalid="errorFile">
+            </md-input-container>
+
+            <md-input-container flex>
+                
+            </md-input-container>
+        </div>
+
+
         <md-button ng-click="vm.save()" class="md-raised md-accent" aria-label="Submit"
                    ng-disabled="basicForm.$invalid">
             Save

@@ -57,7 +57,7 @@ class FormCoverLetter {
                 }
             },
             files(){
-                var test = Files.findOne({_id: "cNAzZTcritamYbDXZ"});
+                var test = Files.findOne({});
                 return test;
             }
         });
@@ -66,20 +66,14 @@ class FormCoverLetter {
     }
 
     save(){
-        //cNAzZTcritamYbDXZ
-        var file = this.file;
-        file.store = 'test';
-        console.log(file);
-        var fileId = Files.insert(file);
-        console.log(fileId);
-       /* var coverLetter = this.coverLetter;
+        var coverLetter = this.coverLetter;
         var file = this.file;
         if(file){
             //if there is a previous file, delete
             if(coverLetter.idFile){
                 Files.remove({_id: coverLetter.fileId});
             }
-            var fileId = Files.insert(file[0]);
+            var fileId = Files.insert(file);
             coverLetter.fileId = fileId;
         }
         Meteor.call('saveCoverLetter', coverLetter,
@@ -96,7 +90,7 @@ class FormCoverLetter {
                     }
                 }
             }
-        );*/
+        );
     }
 }
 
