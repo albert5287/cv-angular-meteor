@@ -1,6 +1,9 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
+import utilsPagination from 'angular-utils-pagination';
+
+import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import './listCoverLetters.html';
 
@@ -13,9 +16,26 @@ class ListCoverLetters {
 
         $reactive(this).attach($scope);
 
+        this.perPage = 2;
+        this.page = 1;
+        this.sort = {
+            name: 1
+        };
+
+        this.subscribe('coverLetters', () => [{
+            limit: parseInt(this.perPage),
+            skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+            sort: this.getReactively('sort')
+        }]);
+
         this.helpers({
             coverLetters ()  {
-                return CoverLetters.find({});
+                return CoverLetters.find({}, {
+                    sort : this.getReactively('sort')
+                });
+            },
+            coverLettersCount() {
+                return Counts.get('numberOfCoverLetters');
             }
 
         });
@@ -33,6 +53,10 @@ class ListCoverLetters {
             }
         );
     }
+
+    pageChanged(newPage) {
+        this.page = newPage;
+    }
 }
 
 const name = 'listCoverLetters';
@@ -40,7 +64,8 @@ const name = 'listCoverLetters';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    uiRouter
+    uiRouter,
+    utilsPagination
 ]).component(name, {
     templateUrl: `imports/ui/components/admin/${name}/${name}.html`,
     controllerAs: "vm",
@@ -62,7 +87,7 @@ function config($stateProvider) {
             data: {
                 title: 'Cover Letters'
             },
-            resolve: {
+            /*resolve: {
                 coverLetter: ['$q', function ($q) {
                     var deferred = $q.defer();
                     Meteor.subscribe('coverLetters', {
@@ -71,7 +96,7 @@ function config($stateProvider) {
                     });
                     return deferred.promise;
                 }]
-            },
+            },*/
         });
 
 }
