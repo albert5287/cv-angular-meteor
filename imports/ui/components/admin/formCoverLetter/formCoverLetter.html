@@ -2,7 +2,7 @@
     <md-card-header>
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">{{vm.headline}} {{::vm.coverLetter.name}}</span>
+                <span class="md-headline">{{vm.headline}} {{vm.coverLetter.name}}</span>
             </md-card-title-text>
         </md-card-title>
     </md-card-header>
@@ -48,28 +48,26 @@
                 <text-angular ng-model="vm.coverLetter.content"></text-angular>
             </md-input-container>
 
-            <md-input-container flex>
-                <input type="file" ngf-select ng-model="vm.file" name="file"
-                       accept="application/pdf"
-                       ngf-model-invalid="errorFile">
-            </md-input-container>
 
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                    <input type="file" ngf-select ng-model="vm.file" name="file"
+                           accept="application/pdf"
+                           ngf-model-invalid="errorFile">
+                </md-input-container>
 
+                <md-input-container flex="50" ng-show="vm.coverLetter.fileId">
+                    <span>
+                        File upladed: <a ng-href="{{vm.coverLetter.file.url()}}"
+                                         target="_blank">{{vm.coverLetter.file.original.name}}</a>
+                    </span>
+                    <md-checkbox ng-model="vm.deleteFile" aria-label="Checkbox delete file">
+                        Delete File
+                    </md-checkbox>
+                </md-input-container>
+            </div>
 
         </div>
-
-        <div layout="column" layout-gt-sm="row">
-            <md-input-container flex>
-                <input type="file" ngf-select ng-model="vm.file" name="file"
-                       accept="application/pdf"
-                       ngf-model-invalid="errorFile">
-            </md-input-container>
-
-            <md-input-container flex>
-                
-            </md-input-container>
-        </div>
-
 
         <md-button ng-click="vm.save()" class="md-raised md-accent" aria-label="Submit"
                    ng-disabled="basicForm.$invalid">
@@ -78,5 +76,3 @@
     </form>
     </md-card-content>
 </md-card>
-
-<p>test: {{vm.files}}</p>

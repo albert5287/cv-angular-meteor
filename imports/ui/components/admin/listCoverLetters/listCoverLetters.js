@@ -19,9 +19,19 @@ class ListCoverLetters {
             }
 
         });
+    }
 
-
-
+    deleteCoverLetter(id){
+        Meteor.call('deleteCoverLetter', id,
+            (error, result) => {
+                if(error){
+                    console.log('error', error);
+                }
+                else{
+                    console.log('ok');
+                }
+            }
+        );
     }
 }
 

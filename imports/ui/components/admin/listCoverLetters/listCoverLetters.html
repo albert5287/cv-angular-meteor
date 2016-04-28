@@ -8,20 +8,19 @@
         <tr>
             <th>Name</th>
             <th>Slug</th>
-            <th>Created on</th>
-            <th>updated on</th>
+          <!--  <th>Created on</th>
+            <th>updated on</th> -->
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="letter in vm.coverLetters">
-            <td data-title="ID">{{::letter.name}}</td>
-            <td data-title="Issue">{{::letter.slug}}</td>
-            <td data-title="Status"></td>
-            <td data-title="Progress"></td>
+            <td data-title="ID" ui-sref="admin.coverLetters.edit({id: letter._id})">{{::letter.name}}</td>
+            <td data-title="Issue" ui-sref="admin.coverLetters.edit({id: letter._id})">{{::letter.slug}}</td>
+            <!--<td data-title="Status" ui-sref="admin.coverLetters.edit({id: letter._id})"></td>
+            <td data-title="Progress" ui-sref="admin.coverLetters.edit({id: letter._id})"></td>-->
             <td data-title="Actions">
-                <md-button class="md-raised md-primary" ui-sref="admin.coverLetters.edit({id: letter._id})">Edit</md-button>
-                <md-button class="md-raised md-warn">Delete</md-button>
+                <md-button class="md-raised md-warn" ng-click="vm.deleteCoverLetter(letter._id)">Delete</md-button>
             </td>
         </tr>
         </tbody>

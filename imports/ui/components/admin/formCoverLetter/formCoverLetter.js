@@ -24,8 +24,9 @@ class FormCoverLetter {
 
         this.$state = $state;
         this.edit = false;
+        this.deleteFile = false;
 
-        vm.headline = 'New Cover Letter';
+        this.headline = 'New Cover Letter';
 
         var letter = {
             name : '',
@@ -37,28 +38,23 @@ class FormCoverLetter {
         //edit a cover letter
         if(this.$state.params.id){
             this.edit = true;
-            vm.headline = 'Edit';
+            this.headline = 'Edit';
         }
 
         //helpers
-        vm.helpers({
+        this.helpers({
             coverLetter ()  {
                 if(this.edit){
                     var coverLetter = CoverLetters.findOne({_id: $state.params.id});
                     if(coverLetter.fileId){
                         coverLetter.file = Files.findOne({_id: coverLetter.fileId});
                     }
-                    console.log(coverLetter);
+                    console.log('coverLetter', coverLetter);
                     return coverLetter;
-                    //return CoverLetters.findOne({_id: $state.params.id});
                 }
                 else{
                     return letter;
                 }
-            },
-            files(){
-                var test = Files.findOne({});
-                return test;
             }
         });
 
@@ -67,14 +63,21 @@ class FormCoverLetter {
 
     save(){
         var coverLetter = this.coverLetter;
+        delete coverLetter.file; //delete the file key
         var file = this.file;
+        //if there ia file to upload
         if(file){
             //if there is a previous file, delete
-            if(coverLetter.idFile){
+            if(coverLetter.fileId){
                 Files.remove({_id: coverLetter.fileId});
             }
-            var fileId = Files.insert(file);
-            coverLetter.fileId = fileId;
+            var fileId = Files.insert(file)._id; //insert the file
+            coverLetter.fileId = fileId; //assign the fileId to the cover letter
+        }
+        //if it is edit mode and is check to delete a file
+        if(this.edit && this.deleteFile){
+            Files.remove({_id: coverLetter.fileId}); //delete the file
+            delete coverLetter.fileId; //delete the fileId key
         }
         Meteor.call('saveCoverLetter', coverLetter,
             (error, result) => {
