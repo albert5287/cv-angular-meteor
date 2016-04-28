@@ -3,6 +3,8 @@
     <i class="material-icons margin-top-15">add</i>
 </md-button>
 <div class="table-responsive-vertical md-whiteframe-z1">
+    <sorting on-change="vm.sortChanged(sort)" property="name" order="1"></sorting>
+    <input type="search" ng-model="vm.searchText" placeholder="Search" />
     <table id="table" class="table table-hover table-bordered">
         <thead>
         <tr>
@@ -15,8 +17,8 @@
         </thead>
         <tbody>
         <tr dir-paginate="letter in vm.coverLetters | itemsPerPage: vm.perPage" total-items="vm.coverLettersCount">
-            <td data-title="ID" ui-sref="admin.coverLetters.edit({id: letter._id})">{{::letter.name}}</td>
-            <td data-title="Issue" ui-sref="admin.coverLetters.edit({id: letter._id})">{{::letter.slug}}</td>
+            <td data-title="ID" ui-sref="admin.coverLetters.edit({id: letter._id})">{{letter.name}}</td>
+            <td data-title="Issue" ui-sref="admin.coverLetters.edit({id: letter._id})">{{letter.slug}}</td>
             <!--<td data-title="Status" ui-sref="admin.coverLetters.edit({id: letter._id})"></td>
             <td data-title="Progress" ui-sref="admin.coverLetters.edit({id: letter._id})"></td>-->
             <td data-title="Actions">
@@ -27,3 +29,4 @@
     </table>
 </div>
 <dir-pagination-controls on-page-change="vm.pageChanged(newPageNumber)"></dir-pagination-controls>
+
