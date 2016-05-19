@@ -6,6 +6,7 @@ import './profileStructure.html';
 
 import { name as Sidebar } from '../sidebar/sidebar';
 import { name as Profile } from '../profile/profile';
+import { name as CoverLetter } from '../coverLetter/coverLetter';
 
 class ProfileStructure {}
 
@@ -17,6 +18,7 @@ export default angular.module(name, [
     uiRouter,
     Sidebar,
     Profile,
+    CoverLetter
 ]).component(name, {
     templateUrl: `imports/ui/components/front/${name}/${name}.html`,
     controllerAs: name,
