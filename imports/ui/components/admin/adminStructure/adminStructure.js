@@ -10,6 +10,7 @@ import { name as Login } from '../login/login';
 import { name as AdminSidebar } from '../adminSidebar/adminSidebar';
 import { name as ListCoverLetters } from '../listCoverLetters/listCoverLetters';
 import { name as FormCoverLetter } from '../formCoverLetter/formCoverLetter';
+import { name as FormProfile } from '../formProfile/formProfile';
 
 class AdminStructure {
     constructor($scope, $reactive, $state){
@@ -31,6 +32,7 @@ export default angular.module(name, [
     AdminSidebar,
     ListCoverLetters,
     FormCoverLetter,
+    FormProfile,
 ]).component(name, {
     templateUrl: `imports/ui/components/admin/${name}/${name}.html`,
     controllerAs: "vm",

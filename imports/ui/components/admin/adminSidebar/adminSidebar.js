@@ -14,27 +14,13 @@ class AdminSidebar{
                 state : 'admin.coverLetters',
                 title: 'Cover letters',
                 icon: 'insert_drive_file'
-            }
-        ];
-
-        vm.menuItems = [
-            {
-                name: 'Dashboard',
-                icon: 'dashboard',
-                sref: '.dashboard'
             },
             {
-                name: 'Profile',
-                icon: 'person',
-                sref: '.profile'
-            },
-            {
-                name: 'Table',
-                icon: 'view_module',
-                sref: '.table'
+                state : 'admin.profile',
+                title: 'Profile',
+                icon: 'account_box'
             }
         ];
-
     }
 }
 
