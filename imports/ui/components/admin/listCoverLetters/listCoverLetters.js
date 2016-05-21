@@ -17,7 +17,7 @@ class ListCoverLetters {
 
         $reactive(this).attach($scope);
 
-        this.perPage = 2;
+        this.perPage = 3;
         this.page = 1;
         this.sort = {
             name: 1

@@ -85,8 +85,94 @@ class FormProfile {
                                     }
                                 }
                             }
+                        },
+                        "skills":{
+                            "type": "array",
+                            "title": "Skills",
+                            "items": {
+                                "type": "object",
+                                "title": "Skill",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "interests":{
+                            "type": "array",
+                            "title": "Interests",
+                            "items": {
+                                "type": "object",
+                                "title": "Interest",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "icon": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
                         }
 
+                    }
+                },
+                "workExperience": {
+                    "type": "array",
+                    "title": "Work Experience",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "company": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "from": {
+                                "type": "string"
+                            },
+                            "until": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "education": {
+                    "type": "array",
+                    "title": "Education",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "institute": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "discipline": {
+                                "type": "string"
+                            },
+                            "score": {
+                                "type": "string"
+                            },
+                            "activities": {
+                                "type": "string"
+                            },
+                            "from": {
+                                "type": "string"
+                            },
+                            "until": {
+                                "type": "string"
+                            }
+                        }
                     }
                 }
 
@@ -317,8 +403,8 @@ class FormProfile {
                 },
                 {
                     "institute": "Universitat Jaume I",
-                    "title": "Ingeniero TÈcnico en Inform·tica de Sistemas",
-                    "discipline": "IngenierÌa inform·tica",
+                    "title": "Ingeniero T√©cnico en Inform√°tica de Sistemas",
+                    "discipline": "Ingenier√≠a inform√°tica",
                     "score": "73/100",
                     "activities": "Distributed Programming, Advanced Databases, InformationTechnologies and Society, Client/Server Systems, Algorithmic Scheme, Networks, Advanced Programming, Data and Information Structures, Operating Systems, Calculus, Physics, Management Software Engineering",
                     "from": "2011",

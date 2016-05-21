@@ -25,3 +25,6 @@ check
 cfs:standard-packages
 cfs:gridfs
 tmeasday:publish-counts
+sanjo:jasmine
+velocity:html-reporter
+velocity:console-reporter
