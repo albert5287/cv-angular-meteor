@@ -1,0 +1,112 @@
+<md-card flex>
+        <md-content class="profile-img">
+            <a ui-sref="profile.cv">
+                <img src="images/profile.jpg" alt="{{sidebar.getFullName}}">
+                <div class="title">
+                    <h2>{{sidebar.getFullName}}</h2> <!-- title name -->
+                    <span>{{sidebar.profile.headline}}</span>  <!-- tagline -->
+                </div>
+            </a>
+        </md-content>
+
+
+        <md-card-content class="bg-color-sidebar">
+            <md-list>
+
+                <md-list-item class="md-3-line">
+                    <i class="material-icons md-avatar material-icon-color">
+                        account_box
+                        <md-tooltip md-direction="top">
+                            About Me
+                        </md-tooltip>
+                    </i>
+                    <div class="md-list-item-text">
+                        <p>{{sidebar.profile.personalInformation.extract}}</p>
+                    </div>
+                    <md-divider md-inset></md-divider>
+                </md-list-item>
+
+                <md-list-item class="md-3-line">
+                    <i class="material-icons md-avatar material-icon-color">
+                        contact_phone
+                        <md-tooltip md-direction="top">
+                            Phone Number
+                        </md-tooltip>
+                    </i>
+                    <div class="md-list-item-text">
+                        <div class="contact-info">
+                            <h4><a ng-href="tel:{{sidebar.getFullPhoneNumber}}">{{sidebar.getPhoneNumberFormatted}}</a></h4> <!-- Number -->
+                            <span>{{sidebar.profile.personalInformation.phone.type}}</span>
+                        </div>
+                    </div>
+                    <md-divider md-inset></md-divider>
+                </md-list-item>
+
+                <md-list-item class="md-3-line">
+                    <i class="material-icons md-avatar material-icon-color">
+                        email
+                        <md-tooltip md-direction="top">
+                            Email
+                        </md-tooltip>
+                    </i>
+                    <div class="md-list-item-text">
+                        <div class="contact-info">
+                            <h4><a ng-href="mailto:{{sidebar.profile.personalInformation.email.email}}">{{sidebar.profile.personalInformation.email.email}}</a></h4> <!-- Email -->
+                            <span>{{sidebar.profile.personalInformation.email.type}}</span>
+                        </div>
+                    </div>
+                    <md-divider md-inset></md-divider>
+                </md-list-item>
+
+                <md-list-item class="md-3-line">
+                    <i class="md-avatar">
+                        <img src="images\github-circle.png" alt="github logo" width="25px" height="25px"/>
+                        <md-tooltip md-direction="top">
+                            Github
+                        </md-tooltip>
+                    </i>
+                    <div class="md-list-item-text">
+                        <div class="contact-info">
+                            <h4><a href="https://github.com/albert5287" target="_blank">albert5287</a></h4> <!-- Github -->
+                            <span>Github account</span>
+                        </div>
+                    </div>
+                    <md-divider md-inset></md-divider>
+                </md-list-item>
+
+                <md-list-item class="md-3-line">
+                    <i class="material-icons md-avatar material-icon-color">
+                        home
+                        <md-tooltip md-direction="top">
+                            Address
+                        </md-tooltip>
+                    </i>
+                    <div class="md-list-item-text">
+                        <div class="contact-info"> <!-- address  -->
+                            <h4>{{sidebar.profile.personalInformation.address.street}} {{sidebar.profile.personalInformation.address.number}}<br>
+                                {{sidebar.profile.personalInformation.address.city}}, {{sidebar.profile.personalInformation.address.country}}.<br>
+                                {{sidebar.profile.personalInformation.address.zip}}</h4>
+                        </div>
+                    </div>
+                    <md-divider md-inset></md-divider>
+                </md-list-item>
+                <md-list-item class="md-3-line">
+                    <i class="material-icons md-avatar material-icon-color">
+                        language
+                        <md-tooltip md-direction="top">
+                            Languages
+                        </md-tooltip>
+                    </i>
+
+                    <div class="md-list-item-text">
+                        <div class="contact-info" ng-repeat="language in sidebar.profile.personalInformation.languages">
+                            <h4>{{language.name}}</h4> <!-- Email -->
+                            <span>{{language.level}}</span>
+                        </div>
+                    </div>
+                </md-list-item>
+
+            </md-list>
+        </md-card-content>
+    </md-card>
+

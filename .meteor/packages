@@ -7,23 +7,22 @@
 meteor-base             # Packages every Meteor app needs to have
 mobile-experience       # Packages for a great mobile UX
 mongo                   # The database Meteor supports right now
-session                 # Client-side reactive dictionary for your app
+reactive-var            # Reactive variable for tracker
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
 
+standard-minifier-js    # JS minifier run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 
-angular
-angularui:angular-ui-router
-standard-minifier-css
-standard-minifier-js
-angular:angular-material
+insecure                # Allow all DB writes from clients (for prototyping)
+angular-templates
+pbastowski:angular-babel
 fourseven:scss
-angular:angular-sanitize
+seba:minifiers-autoprefixer
 accounts-password
-ins0m:accounts-ui-angular-unstyled
-rshashkov:angular-meteor-text-angular
-yasaricli:slugify
+dotansimha:accounts-ui-angular
+check
 cfs:standard-packages
-danialfarid:ng-file-upload
 cfs:gridfs
+tmeasday:publish-counts
+practicalmeteor:mocha

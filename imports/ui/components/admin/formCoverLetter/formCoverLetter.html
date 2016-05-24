@@ -1,0 +1,78 @@
+<md-card>
+    <md-card-header>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{vm.headline}} {{vm.coverLetter.name}}</span>
+            </md-card-title-text>
+        </md-card-title>
+    </md-card-header>
+    <md-card-content>
+    <form name="basicForm" class="md-inline-form" novalidate>
+
+        <div layout="column">
+            <md-input-container flex>
+                <input type="text" name="name" ng-model="vm.coverLetter.name"
+                       placeholder="Cover Letter Name"
+                       required>
+                <div ng-messages="basicForm.name.$error"
+                     role="alert">
+                    <div ng-message="required">
+                        <span>The letter name field is required.</span>
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container flex>
+                <input type="text" name="title" ng-model="vm.coverLetter.title" placeholder="Title"
+                       required>
+                <div ng-messages="basicForm.title.$error"
+                     role="alert">
+                    <div ng-message="required">
+                        <span>Title field is required.</span>
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container flex>
+                <input type="text" name="subtitle" ng-model="vm.coverLetter.subtitle" placeholder="Subtitle"
+                       required>
+                <div ng-messages="basicForm.subtitle.$error"
+                     role="alert">
+                    <div ng-message="required">
+                        <span>Subtitle field is required.</span>
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container flex>
+                <text-angular ng-model="vm.coverLetter.content"></text-angular>
+            </md-input-container>
+
+
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                    <input type="file" ngf-select ng-model="vm.file" name="file"
+                           accept="application/pdf"
+                           ngf-model-invalid="errorFile">
+                </md-input-container>
+
+                <md-input-container flex="50" ng-show="vm.coverLetter.fileId">
+                    <span>
+                        File upladed: <a ng-href="{{vm.coverLetter.file.url()}}"
+                                         target="_blank">{{vm.coverLetter.file.original.name}}</a>
+                    </span>
+                    <md-checkbox ng-model="vm.deleteFile" aria-label="Checkbox delete file">
+                        Delete File
+                    </md-checkbox>
+                </md-input-container>
+            </div>
+
+        </div>
+
+        <md-button ng-click="vm.save()" class="md-raised md-accent" aria-label="Submit"
+                   ng-disabled="basicForm.$invalid">
+            Save
+        </md-button>
+    </form>
+    </md-card-content>
+</md-card>
