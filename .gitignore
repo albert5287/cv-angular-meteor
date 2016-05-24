@@ -1,2 +1,4 @@
 cv.tar.gz
 .idea/
+node_modules/
+*.DS_Store
