@@ -1,30 +1,24 @@
-https://codeship.com/projects/YOUR_PROJECT_UUID/status?branch=master
-# README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+![codeship badge](https://codeship.com/projects/d690cb90-03dc-0134-7d44-72552e80e669/status?branch=master)
 
-### What is this repository for? ###
+# cv-angular-meteor
+This small project, is a small app to show my curriculum.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+This app have been developed using angular-meteor, following ES2015 syntax
+
+Here is the deployed final version - http://albertgracia.com
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* first run
+```bash
+meteor npm install --save
+```
+* then
+```bash
+meteor
+```
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+### To do's
+*more testing
+*improve the form for the profile part
