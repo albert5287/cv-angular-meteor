@@ -19,6 +19,6 @@ meteor npm install --save
 meteor
 ```
 
-### To do's
-*more testing
-*improve the form for the profile part
+### To do's ###
+* more testing
+* improve the form for the profile part
