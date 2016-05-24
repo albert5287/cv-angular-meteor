@@ -5,62 +5,65 @@ import './sidebar.html';
 import { Profiles } from '../../../../api/profiles';
 
 class Sidebar{
-  constructor($scope, $reactive){
-    'ngInject';
+    constructor($scope, $reactive){
+        'ngInject';
 
-    $reactive(this).attach($scope);
+        $reactive(this).attach($scope);
 
-    var profile = Profiles.findOne({});
+        this.helpers({
+            profile() {
+                return Profiles.findOne({});
+            }
+            ,
+            getFullName() {
+                return this.getFullName();
+            },
+            getFullPhoneNumber(){
+                return this.getFullPhoneNumber();
+            },
 
-    this.helpers({
-      profile() {
-        return profile;
-      },
-      getFullName() {
-        return getFullName();
-      },
-      getFullPhoneNumber(){
-        return getFullPhoneNumber();
-      },
+            getPhoneNumberFormatted() {
+                return this.getPhoneNumberFormatted();
+            }
+        });
 
-      getPhoneNumberFormatted() {
-        return getPhoneNumberFormatted();
-      }
-    });
-
-    function getFullName(){
-      var fullName = '';
-      if(profile){
-        fullName = profile.firstName + ' ' + profile.lastName;
-      }
-      return fullName;
     }
 
-    function getFullPhoneNumber(){
-      var fullNumber = '';
-      if(profile){
-        fullNumber = profile.personalInformation.phone.code +  profile.personalInformation.phone.number;
-      }
-      return fullNumber;
+    getFullName(){
+        var profile = this.profile;
+        var fullName = '';
+        if(profile){
+            fullName = profile.firstName + ' ' + profile.lastName;
+        }
+        return fullName;
     }
 
-    function getPhoneNumberFormatted(){
-      var fullNumber = '';
-      if(profile){
-        fullNumber = '(' + profile.personalInformation.phone.code + ') ' + profile.personalInformation.phone.number;
-      }
-      return fullNumber;
+    getFullPhoneNumber(){
+        var profile = this.profile;
+        var fullNumber = '';
+        if(profile){
+            fullNumber = profile.personalInformation.phone.code +  profile.personalInformation.phone.number;
+        }
+        return fullNumber;
     }
-  }
+
+    getPhoneNumberFormatted(){
+        var profile = this.profile;
+        var fullNumber = '';
+        if(profile){
+            fullNumber = '(' + profile.personalInformation.phone.code + ') ' + profile.personalInformation.phone.number;
+        }
+        return fullNumber;
+    }
 }
 
 const name = 'sidebar';
 
 // create a module
 export default angular.module(name, [
-  angularMeteor
+    angularMeteor
 ]).component(name, {
-  templateUrl: `imports/ui/components/front/${name}/${name}.html`,
-  controllerAs: name,
-  controller: Sidebar
+    templateUrl: `imports/ui/components/front/${name}/${name}.html`,
+    controllerAs: name,
+    controller: Sidebar
 });
