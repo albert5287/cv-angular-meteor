@@ -26,4 +26,3 @@ cfs:standard-packages
 cfs:gridfs
 tmeasday:publish-counts
 practicalmeteor:mocha
-dispatch:mocha-phantomjs
